@@ -13,11 +13,24 @@ namespace Esh
             return BitConverter.ToInt32(data, 0);
         }
 
+        public static int Byte4toInt32(byte[] data, int index)
+        {
+            return BitConverter.ToInt32(data, index);
+        }
+
         public static byte[] IntTo4Byte(int a)
         {
             byte[] buffer = new byte[4];
             buffer = BitConverter.GetBytes(a);
             return buffer;
+        }
+
+        public static byte[] IntTo4Byte(int a, byte[] data, int index)
+        {
+            byte[] buffer = new byte[4];
+            buffer = BitConverter.GetBytes(a);
+            for(int i = 0; i < 4; i++) { data[i + index] = buffer[i]; }
+            return data;
         }
 
         /// <summary>
@@ -42,14 +55,14 @@ namespace Esh
 
         static public byte[] StrToByte(string str)
         {
-            byte[] arr = Encoding.ASCII.GetBytes(str);
+            byte[] arr = Encoding.GetEncoding(1251).GetBytes(str);
             return arr;
         }
 
 
         static public string ByteToStr(byte[] arr)
         {
-            string str = Encoding.ASCII.GetString(arr);
+            string str = Encoding.GetEncoding(1251).GetString(arr);
             return str;
         }
 
