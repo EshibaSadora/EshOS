@@ -17,7 +17,7 @@ namespace Esh
         static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
 
         /// <summary>
-        /// // С помощью конструктора записываем пусть до файла и его имя.
+        ///  С помощью конструктора записываем пусть до файла и его имя.
         /// </summary>
         /// <param name="IniPath"></param>
         public IniFile(string IniPath)
@@ -25,7 +25,12 @@ namespace Esh
             Path = new FileInfo(IniPath).FullName.ToString();
         }
 
-        //Читаем ini-файл и возвращаем значение указного ключа из заданной секции.
+        /// <summary>
+        /// Читаем ini-файл и возвращаем значение указного ключа из заданной секции в формате String.
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public string ReadINI(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
@@ -33,6 +38,12 @@ namespace Esh
             return RetVal.ToString();
         }
 
+        /// <summary>
+        /// Считывает число с Экстремулой и конвертирует его в Int32
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public int ReadINI_Int_E(string Section, string Key)
         {
 
@@ -56,6 +67,13 @@ namespace Esh
             return RetInt;
         }
 
+
+        /// <summary>
+        /// Считывает число с Экстремулой и конвертирует его в Float
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public float ReadINI_Float_E(string Section, string Key)
         {
 
@@ -73,15 +91,16 @@ namespace Esh
                 Single.TryParse(RetString, out RetFloat);
             }
 
-
-
-
-
             return RetFloat;
         }
 
 
-        //Читаем ini-файл и возвращаем значение указного ключа из заданной секции в Int.
+        /// <summary>
+        /// Читаем ini-файл и возвращаем значение указного ключа из заданной секции в Int.
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public int ReadINI_Int(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
@@ -98,7 +117,12 @@ namespace Esh
         }
 
 
-        //Читаем ini-файл и возвращаем значение указного ключа из заданной секции в Float.
+        /// <summary>
+        /// Читаем ini-файл и возвращаем значение указного ключа из заданной секции в Float.
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public float ReadINI_Float(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
@@ -112,24 +136,42 @@ namespace Esh
             float RetFloat = RetInt;
             return RetFloat;
         }
-
-        //Записываем в ini-файл. Запись происходит в выбранную секцию в выбранный ключ.
+        /// <summary>
+        /// Записываем в ini-файл. Запись происходит в выбранную секцию в выбранный ключ.
+        /// </summary>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <param name="Value"></param>
         public void Write(string Section, string Key, string Value)
         {
             WritePrivateProfileString(Section, Key, Value, Path);
         }
 
-        //Удаляем ключ из выбранной секции.
+        /// <summary>
+        /// Удаляем ключ из выбранной секции.
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <param name="Section"></param>
         public void DeleteKey(string Key, string Section = null)
         {
             Write(Section, Key, null);
         }
-        //Удаляем выбранную секцию
+
+        /// <summary>
+        /// Удаляем выбранную секцию
+        /// </summary>
+        /// <param name="Section"></param>
         public void DeleteSection(string Section = null)
         {
             Write(Section, null, null);
         }
-        //Проверяем, есть ли такой ключ, в этой секции
+
+        /// <summary>
+        /// Проверяем, есть ли такой ключ, в этой секции
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <param name="Section"></param>
+        /// <returns></returns>
         public bool KeyExists(string Key, string Section = null)
         {
             return ReadINI(Section, Key).Length > 0;
