@@ -18,14 +18,15 @@ namespace Esh
     {
         string path = "";
 
-        IniFile ini = new IniFile("server.conf");
+        IniFile ini;
 
         public char scobka = '"';
 
 
-        public SQliteDB()
+        public SQliteDB(string conf)
         {
-            path = ini.ReadINI("database", "dbfile");
+            ini = new IniFile(conf);
+            path = ini.Read("database", "dbfile");
         }
 
         public string Read(string db, string column, string sql)

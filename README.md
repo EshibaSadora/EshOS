@@ -12,6 +12,10 @@ EshConsoleOSLog.cs -Beautiful messages for the user in Win Console.
 
 EshForms.cs -Simple messages for the user. -Simple FileDialog.
 
+EshCsCompiller.cs - Compiller c# on c#
+
+EshSqlite.cs - eazy work with sqlite
+example/SqLite.conf - config to connect
 
 ***********************************************************************************
 Please Add NuGet package SQLite.

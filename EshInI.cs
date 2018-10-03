@@ -31,7 +31,7 @@ namespace Esh
         /// <param name="Section"></param>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public string ReadINI(string Section, string Key)
+        public string Read(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
             GetPrivateProfileString(Section, Key, "", RetVal, 255, Path);
@@ -44,7 +44,7 @@ namespace Esh
         /// <param name="Section"></param>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public int ReadINI_Int_E(string Section, string Key)
+        public int ReadInt_E(string Section, string Key)
         {
 
             var RetVal = new StringBuilder(255);
@@ -74,7 +74,7 @@ namespace Esh
         /// <param name="Section"></param>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public float ReadINI_Float_E(string Section, string Key)
+        public float ReadFloat_E(string Section, string Key)
         {
 
             var RetVal = new StringBuilder(255);
@@ -101,7 +101,7 @@ namespace Esh
         /// <param name="Section"></param>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public int ReadINI_Int(string Section, string Key)
+        public int ReadInt(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
             GetPrivateProfileString(Section, Key, "", RetVal, 255, Path);
@@ -123,7 +123,7 @@ namespace Esh
         /// <param name="Section"></param>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public float ReadINI_Float(string Section, string Key)
+        public float ReadFloat(string Section, string Key)
         {
             var RetVal = new StringBuilder(255);
             GetPrivateProfileString(Section, Key, "", RetVal, 255, Path);
@@ -174,7 +174,7 @@ namespace Esh
         /// <returns></returns>
         public bool KeyExists(string Key, string Section = null)
         {
-            return ReadINI(Section, Key).Length > 0;
+            return Read(Section, Key).Length > 0;
         }
     }
 

@@ -29,6 +29,17 @@ namespace Esh
             return BitConverter.ToInt32(data, index);
         }
 
+
+        /// <summary>
+        /// Конвертирует массив 2 байтов в Int16
+        /// </summary>
+        /// <param name="data">массив</param>
+        /// <returns></returns>
+        public static int Byte2ToInt16(byte[] data)
+        {
+            return BitConverter.ToInt16(data, 0);
+        }
+
         /// <summary>
         /// Конвертирует число Int32 в массив из 4 байт. 
         /// </summary>
@@ -37,6 +48,19 @@ namespace Esh
         public static byte[] IntTo4Byte(int a)
         {
             byte[] buffer = new byte[4];
+            buffer = BitConverter.GetBytes(a);
+            return buffer;
+        }
+
+
+        /// <summary>
+        /// Конвертирует число Int16 в массив из 2 байт. 
+        /// </summary>
+        /// <param name="a">число</param>
+        /// <returns></returns>
+        public static byte[] IntTo4Byte(Int16 a)
+        {
+            byte[] buffer = new byte[2];
             buffer = BitConverter.GetBytes(a);
             return buffer;
         }
