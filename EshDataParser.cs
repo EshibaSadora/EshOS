@@ -80,6 +80,22 @@ namespace Esh
             return data;
         }
 
+        static public sbyte ByteTOsbyte(byte var)
+        {
+            return unchecked((sbyte)var);
+        }
+
+        /// <summary>
+        /// Конввертирует два байта в формате 0xFF в Int16
+        /// </summary>
+        /// <param name="MSB">Старший байт</param>
+        /// <param name="LSB">младший байт</param>
+        /// <returns></returns>
+        static public UInt16 bytes_to_u16(byte MSB, byte LSB)
+        {
+            return Convert.ToUInt16((MSB & 255) << 8 | LSB & 255);
+        }
+
         /// <summary>
         /// 
         /// </summary>
