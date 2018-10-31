@@ -17,5 +17,7 @@ EshCsCompiller.cs - Compiller c# on c#
 EshSqlite.cs - eazy work with sqlite
 example/SqLite.conf - config to connect
 
+EshFiles.cs - eazy work with txt and other files
+
 ***********************************************************************************
 Please Add NuGet package SQLite.
