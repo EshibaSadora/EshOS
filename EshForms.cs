@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Windows.Forms;
 using System.IO;
 
@@ -26,6 +18,45 @@ namespace Esh.Forms
 
             openFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
             openFileDialog1.Filter = filetype + " files (*." + filetype + ")|*." + filetype + "|All files (*.*)|*.*";
+            // openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            //Код чтения
+                            file = openFileDialog1.FileName;
+                            myStream.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Невозможно прочитать файл  " + ex.ToString());
+
+                }
+            }
+
+            return file;
+        }
+
+        /// <summary>
+        /// Возвращает строковое значение пути до файла, который нужно загрузить
+        /// <param name="filetype">filetype - Укажите расширение файла</param>
+        /// </summary>
+        public string openfile()
+        {
+            string file = null;
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+           // openFileDialog1.Filter = filetype + " files (*." + filetype + ")|*." + filetype + "|All files (*.*)|*.*";
             // openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
 
