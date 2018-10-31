@@ -78,6 +78,68 @@ namespace Esh.ConsoleOS
 
             for (int i = first; i < end; i++)
             {
+                Console.Write(" [" + a[i] + "]");
+            }
+            Console.WriteLine("конец массива.");
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void Msg(int[] a)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Массив INT32:");
+
+            int strcount = a.Length / 50;
+            if (strcount<0) strcount = 1;
+
+            for (int x = 0; x < strcount;x ++)
+            {
+                for (int y = 0; y < 100; y++)
+                {
+                    Console.WriteLine();
+                    for(int i = 0; i< strcount;i++)
+                    {
+                        Console.Write("   ");
+                    }
+                    Console.Write(a[y + (x * 100)]);
+                }
+            }
+
+            Console.WriteLine("конец массива.");
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+
+        public static void Msg(ConsoleColor col, string a)
+        {
+            Console.ForegroundColor = col;
+            Console.WriteLine(a);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void Msg(ConsoleColor col, int a)
+        {
+            Console.ForegroundColor = col;
+            Console.WriteLine(a);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void Msg(ConsoleColor col, float a)
+        {
+            Console.ForegroundColor = col;
+            Console.WriteLine(a);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void Msg(ConsoleColor col, byte[] a, int first, int end)
+        {
+            Console.ForegroundColor = col;
+            Console.WriteLine("Массив байтов:");
+
+            for (int i = first; i < end; i++)
+            {
 
                 Console.Write(" [" + a[i] + "]");
             }
