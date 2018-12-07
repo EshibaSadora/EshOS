@@ -13,22 +13,23 @@ namespace Esh
         string path;
         string[] pathes;
 
-        Files(string _path)
+
+        public Files(string _path)
         {
             path = _path;
         }
 
-        Files(string [] _path)
+        public Files(string [] _path)
         {
             pathes = _path;
         }
 
-        Files()
+        public Files()
         {
 
         }
 
-        public string readtxt()
+        public static string Readtxt(string path)
         {
             string str = "";
             using (StreamReader sr = new StreamReader(path))
@@ -42,25 +43,49 @@ namespace Esh
             return str;
         }
 
-        public void writetxt(string str)
+        public static string Readtxt(string path,Encoding enc)
         {
-            using (StreamWriter sr = new StreamWriter(path))
+            string str = "";
+            using (StreamReader sr = new StreamReader(path,enc))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    str += line + "\n";
+                }
+            }
+            return str;
+        }
+
+        public void Writetxt(string str)
+        {
+            using (StreamWriter sr = new StreamWriter(path,false))
             {
                 sr.Write(str);
             }
         }
 
-        public static void writetxt(string path, string str)
+        public static void Writetxt(string path, string str)
         {
-            using (StreamWriter sr = new StreamWriter(path))
+            using (StreamWriter sr = new StreamWriter(path, false))
             {
                 sr.Write(str);
             }
         }
+
+        public static void Writetxt(string path, string str, Encoding enc)
+        {
+            using (StreamWriter sr = new StreamWriter(path, false, enc))
+            {
+                sr.Write(str);
+            }
+        }
+
+
 
         public static void WritelineTotxt(string path, string str)
         {
-            using (StreamWriter sr = new StreamWriter(path))
+            using (StreamWriter sr = new StreamWriter(path, false, Encoding.GetEncoding(1251)))
             {
                 sr.WriteLine(str);
             }
