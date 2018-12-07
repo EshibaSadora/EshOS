@@ -353,7 +353,7 @@ namespace Esh.ConsoleOS
             return data;
         }
 
-        static public string[] DirFiles(string path)
+        static public string[] DirFiles(string path )
         {
             
 
@@ -364,7 +364,7 @@ namespace Esh.ConsoleOS
             int i = 0;
             foreach (FileInfo file in dir.GetFiles())
             {
-                str[i] = Path.GetFileNameWithoutExtension(file.FullName);
+                str[i] = file.FullName;
                 i++;
             }
 
