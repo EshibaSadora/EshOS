@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.IO;
 
+
+
 namespace Esh.Forms
 {
     public class Filedialog
@@ -112,6 +114,20 @@ namespace Esh.Forms
             }
 
             return dir;
+        }
+
+        public string openfolder()
+        {
+            string folderPath = "";
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                folderPath = folderDlg.SelectedPath;
+            }
+            return folderPath;
         }
     }
 
