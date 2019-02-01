@@ -4,7 +4,7 @@ Libs for simple work with Visual Studio c# It helps me with some my projects.
 
 IniFile.cs -Work with INI
 
-data_parser.cs -BIN->STR -STR->BIN -STR->SHA1 -SHA1->SRTR
+DataConverter.cs - Work with different data types
 
 EshConsoleOS.cs -Simple create comfortable Apps in Win Console.
 
