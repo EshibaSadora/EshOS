@@ -8,11 +8,11 @@ using System.Data.SQLite;
 using System.Data.Common;
 using System.IO;
 using System.Data;
-using Esh;
+using Eshiba;
 
 
 
-namespace Esh
+namespace Eshiba
 {
     public class SQliteDB
     {

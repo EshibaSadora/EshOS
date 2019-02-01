@@ -5,7 +5,7 @@ using System.Text;
 
 using System.IO;
 
-namespace Esh
+namespace Eshiba
 {
     public class Files
     {

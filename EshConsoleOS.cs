@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Esh.Forms;
+using Eshiba.Forms;
 
-namespace Esh.ConsoleOS
+namespace Eshiba.ConsoleOS
 {
     static public class OS
     {

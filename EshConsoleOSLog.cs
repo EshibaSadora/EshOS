@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Esh.ConsoleOS
+namespace Eshiba.ConsoleOS
 {
     public static class OSLog
     {

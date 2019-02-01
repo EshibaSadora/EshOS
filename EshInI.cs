@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System;
 
-namespace Esh
+namespace Eshiba
 {
     public class IniFile
     {

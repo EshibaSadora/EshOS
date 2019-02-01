@@ -7,10 +7,10 @@ using System.CodeDom.Compiler;
 using Microsoft.CSharp;
 using System.IO;
 
-using Esh.ConsoleOS;
+using Eshibaiba.ConsoleOS;
 
 
-namespace Esh.Compiller
+namespace Eshibaiba.Compiller
 {
     public static class Compiller
     {
