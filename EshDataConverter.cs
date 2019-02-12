@@ -223,6 +223,17 @@ namespace Eshiba
                 Arr_In[begin_index + i] = Arr_from[i];
             }
         }
+		
+		        /// <summary>
+        /// Преобразует в Float
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static float ToFloat(string str)
+        {
+            str = str.Replace('.', ',');
+            return Convert.ToSingle(str);
+        }
 
     }
 }
