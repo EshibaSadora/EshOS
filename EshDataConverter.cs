@@ -235,5 +235,34 @@ namespace Eshiba
             return Convert.ToSingle(str);
         }
 
+
+        static public char[] StrToChar(string in_,int length)
+        {
+            Char[] out_ = new char[length];
+
+            out_[0] = Convert.ToChar(in_.Length);
+
+            for (int i = 0; i < in_.Length; i++)
+            {
+                out_[i+1] = in_[i];
+            }
+
+            return out_;
+        }
+
+
+        static public string CharToStr(char [] in_)
+        {
+            int lenght = Convert.ToInt32(in_[0]);
+            char[] str = new char[lenght];
+
+            for (int i = 0; i < lenght; i++)
+            {
+                str[i] = in_[i + 1];
+            }
+
+            return new string(str);
+        }
+
     }
 }
