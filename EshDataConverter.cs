@@ -224,7 +224,7 @@ namespace Eshiba
             }
         }
 		
-		        /// <summary>
+		/// <summary>
         /// Преобразует в Float
         /// </summary>
         /// <param name="str"></param>
@@ -236,32 +236,82 @@ namespace Eshiba
         }
 
 
-        static public char[] StrToChar(string in_,int length)
+        /// <summary>
+        /// Получает массив Char из Строки
+        /// </summary>
+        /// <param name="input">Входная строка</param>
+        /// <param name="length">Длина строки</param>
+        /// <returns></returns>
+        static public char[] StrToChar(string input, int length)
         {
             Char[] out_ = new char[length];
 
-            out_[0] = Convert.ToChar(in_.Length);
+            out_[0] = Convert.ToChar(input.Length);
 
-            for (int i = 0; i < in_.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
-                out_[i+1] = in_[i];
+                out_[i+1] = input[i];
             }
 
             return out_;
         }
 
 
-        static public string CharToStr(char [] in_)
+        /// <summary>
+        /// Получает строку из массива Char
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        static public string CharToStr(char [] input)
         {
-            int lenght = Convert.ToInt32(in_[0]);
+            int lenght = Convert.ToInt32(input[0]);
             char[] str = new char[lenght];
 
             for (int i = 0; i < lenght; i++)
             {
-                str[i] = in_[i + 1];
+                str[i] = input[i + 1];
             }
 
             return new string(str);
+        }
+
+        /// <summary>
+        /// Получает массив байт из строки
+        /// </summary>
+        /// <param name="input">Входная строка</param>
+        /// <param name="length">Длина строки</param>
+        /// <returns></returns>
+        static public byte[] StrToByte(string input, int length)
+        {
+            char[] str = StrToChar(input, length);
+            byte[] bytestr = new byte[length * 2];
+            for(int i = 0; i < str.Length; i++)
+            {
+                byte[] arr = BitConverter.GetBytes(str[i]);
+                bytestr[i * 2] = arr[0];
+                bytestr[i * 2 + 1] = arr[1];
+            }
+            return bytestr;
+        }
+
+        /// <summary>
+        /// Получает строку из массива байтов
+        /// </summary>
+        /// <param name="input">Входной массив</param>
+        /// <param name="length">Длина строки</param>
+        /// <returns></returns>
+        static public string ByteToStr(byte [] input, int length)
+        {
+            char[] str = new char[length];
+ 
+
+            for (int i = 0; i < str.Length/2; i++)
+            {
+                str[i] = Convert.ToChar(BitConverter.ToChar(new byte[] { input[i * 2], input[i * 2 + 1] }, 0));
+            }
+
+            return CharToStr(str);
+
         }
 
     }
