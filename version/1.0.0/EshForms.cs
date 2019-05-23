@@ -8,6 +8,9 @@ using System.IO;
 
 namespace Eshiba.Forms
 {
+    /// <summary>
+    /// Упрощённые файловые диалоги
+    /// </summary>
     public class Filedialog
     {
         /// <summary>
@@ -133,6 +136,9 @@ namespace Eshiba.Forms
         }
     }
 
+    /// <summary>
+    /// Упрощённый вывод MessageBox
+    /// </summary>
     public static class Msg
     {
         public static void Show()

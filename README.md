@@ -1,23 +1,11 @@
-All comments in code on Russian!
-
-Libs for simple work with Visual Studio c# It helps me with some my projects.
-
-IniFile.cs -Work with INI
-
-DataConverter.cs - Work with different data types
-
-EshConsoleOS.cs -Simple create comfortable Apps in Win Console.
-
-EshConsoleOSLog.cs -Beautiful messages for the user in Win Console.
-
-EshForms.cs -Simple messages for the user. -Simple FileDialog.
-
-EshCsCompiller.cs - Compiller c# on c#
-
-EshSqlite.cs - eazy work with sqlite
-example/SqLite.conf - config to connect
-
-EshFiles.cs - eazy work with txt and other files
-
-***********************************************************************************
-Please Add NuGet package SQLite.
+*************************************************************************************************************
+EshOS.cs - Тут будут добавлены мои типы данных (пока есть только Int4)
+IniFile.cs - для работы с Ini файлами
+DataConverter.cs - для конвертирования разных типов данных
+EshConsoleOS.cs - упрощение работы с консольными приложениями, разные украшательства (требует переделки)
+EshFormsDialogs.cs -  Упрощённые файловые диалоги и вывод сообщений
+EshCsCompiller.cs - Компилятор C#
+EshSqlite.cs - Простая работа с SQLite (требует конфиг, потом перепишу без него)(Нужно добавить NuGet SQLite) 
+EshNet.cs - Реализация приложений Клиент-Сервер (TCP)
+EshSerial.cs - для работы сom портом
+**************************************************************************************************************
