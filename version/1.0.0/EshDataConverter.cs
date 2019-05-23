@@ -1,4 +1,4 @@
-﻿//Версия 1.0.1
+﻿//Версия 1.0.0
 
 using System;
 using System.Collections.Generic;
@@ -32,22 +32,10 @@ namespace Eshiba
             return BitConverter.ToInt32(data, index);
         }
 
-        /// <summary>
-        /// LH
-        /// </summary>
-        /// <param name="var"></param>
-        /// <returns></returns>
         public static byte[] Int16To2Byte(UInt16 var)
         {
             byte[] ba = BitConverter.GetBytes(var);
             return ba;
-        }
-
-        public static void Int16To2Byte(UInt16 var,ref Byte L,ref Byte H)
-        {
-            byte[] ba = BitConverter.GetBytes(var);
-            L = ba[0];
-            H = ba[1];
         }
 
         /// <summary>
@@ -358,56 +346,5 @@ namespace Eshiba
         {
             return Convert.ToByte(arr);
         }
-
-        public static uint ColorToUint32(System.Drawing.Color col)
-        {
-            return BitConverter.ToUInt32(new byte[] { col.B, col.G, col.R, 0xFF }, 0);
-        }
-
-        public static UInt4[] ByteTo2Uint4(byte value)
-        {
-            System.Collections.BitArray[] arr = new System.Collections.BitArray[2];
-
-            System.Collections.BitArray boolarr = ToBits(value);
-
-            arr[0] = new System.Collections.BitArray(4);
-            arr[1] = new System.Collections.BitArray(4);
-
-            for (int i = 0; i < 4; i++)
-            {
-                arr[0][i] = boolarr[i];
-                arr[1][i] = boolarr[i + 4];
-            }
-
-            UInt4[] ret = new UInt4[2];
-
-            ret[0] = arr[1];
-            ret[1] = arr[0];
-
-            return ret;
-
-        }
-            public static void ByteTo2Uint4(byte value, ref UInt4 L, ref UInt4 H)
-            {
-                System.Collections.BitArray[] arr = new System.Collections.BitArray[2];
-
-                System.Collections.BitArray boolarr = ToBits(value);
-
-                arr[0] = new System.Collections.BitArray(4);
-                arr[1] = new System.Collections.BitArray(4);
-
-                for (int i = 0; i < 4; i++)
-                {
-                    arr[0][i] = boolarr[i];
-                    arr[1][i] = boolarr[i + 4];
-                }
-
-                UInt4[] ret = new UInt4[2];
-
-                H = arr[1];
-                L = arr[0];
-            }
-
-
-        }
+    }
 }
