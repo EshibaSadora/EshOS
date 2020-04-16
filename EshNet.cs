@@ -1,4 +1,4 @@
-//Версия 1.0.1
+//Версия 1.0.2
 
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace Eshiba
 {
@@ -105,8 +106,8 @@ namespace Eshiba
 
             static public void SendString(Socket handler, string var)
             {
-                byte[] str = DataConverter.StrToByte(var);
-                handler.Send(BitConverter.GetBytes(str.Length));
+                byte[] str = System.Text.Encoding.UTF8.GetBytes(var);
+                SendInt32(handler, str.Length);
                 handler.Send(str);
             }
 
@@ -114,9 +115,17 @@ namespace Eshiba
             {
                 byte[] data = new byte[4];
                 handler.Receive(data);
+                if (DataConverter.Byte4toInt32(data) == 0) return "";
                 byte[] str = new byte[DataConverter.Byte4toInt32(data)];
                 handler.Receive(str);
                 return DataConverter.ByteToStr(str);
+            }
+			
+			private static string CreateBase64Secret(int size)
+            {
+                byte[] key = new byte[size];
+                RNGCryptoServiceProvider.Create().GetBytes(key);
+                return DataConverter.ByteToStr(key);
             }
 
         }
