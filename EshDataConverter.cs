@@ -186,7 +186,7 @@ namespace Eshiba
         /// <returns></returns>
         static public string ByteToStr(byte[] arr)
         {
-            string str = Encoding.GetEncoding(1251).GetString(arr);
+            string str = System.Text.Encoding.UTF8.GetString(arr);
             return str;
         }
 
@@ -359,54 +359,8 @@ namespace Eshiba
             return Convert.ToByte(arr);
         }
 
-        public static uint ColorToUint32(System.Drawing.Color col)
-        {
-            return BitConverter.ToUInt32(new byte[] { col.B, col.G, col.R, 0xFF }, 0);
-        }
 
-        public static UInt4[] ByteTo2Uint4(byte value)
-        {
-            System.Collections.BitArray[] arr = new System.Collections.BitArray[2];
 
-            System.Collections.BitArray boolarr = ToBits(value);
-
-            arr[0] = new System.Collections.BitArray(4);
-            arr[1] = new System.Collections.BitArray(4);
-
-            for (int i = 0; i < 4; i++)
-            {
-                arr[0][i] = boolarr[i];
-                arr[1][i] = boolarr[i + 4];
-            }
-
-            UInt4[] ret = new UInt4[2];
-
-            ret[0] = arr[1];
-            ret[1] = arr[0];
-
-            return ret;
-
-        }
-            public static void ByteTo2Uint4(byte value, ref UInt4 L, ref UInt4 H)
-            {
-                System.Collections.BitArray[] arr = new System.Collections.BitArray[2];
-
-                System.Collections.BitArray boolarr = ToBits(value);
-
-                arr[0] = new System.Collections.BitArray(4);
-                arr[1] = new System.Collections.BitArray(4);
-
-                for (int i = 0; i < 4; i++)
-                {
-                    arr[0][i] = boolarr[i];
-                    arr[1][i] = boolarr[i + 4];
-                }
-
-                UInt4[] ret = new UInt4[2];
-
-                H = arr[1];
-                L = arr[0];
-            }
 
 
         }
