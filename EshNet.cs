@@ -31,15 +31,14 @@ namespace Eshiba
 
             public static void CreateServer()
             {
-                ipHost = Dns.GetHostEntry(ip);
-                ipAddr = ipHost.AddressList[0];
-                ipEndPoint = new IPEndPoint(ipAddr, port);
-                socket = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                IPAddress localAddress = IPAddress.Parse(ip);
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                IPEndPoint ipEndpoint = new IPEndPoint(localAddress, port);
 
                 try
                 {
-                    socket.Bind(ipEndPoint);
-                    socket.Listen(10);
+                    socket.Bind(ipEndpoint);
+                    socket.Listen(1);
 
 
                     while (true)
